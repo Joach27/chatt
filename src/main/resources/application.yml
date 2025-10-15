@@ -1,0 +1,15 @@
+openrouter:
+  api-key: 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
+  base-url: https://openrouter.ai/api/v1
+  default-model: openai/gpt-3.5-turbo
+
+spring:
+  application:
+    name: chatt
+
+logging:
+  level:
+    org.springframework.web.reactive.function.client.ExchangeFunctions: INFO
+    
+server:
+  port: 8080
