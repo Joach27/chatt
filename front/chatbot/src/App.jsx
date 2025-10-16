@@ -5,6 +5,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import "./App.css";
 
+import { ErrorBoundary } from "./ErrorBoundary";
+
 function App() {
   const [input, setInput] = useState("");
   const [model, setModel] = useState("openai/gpt-3.5-turbo");
@@ -113,9 +115,11 @@ function App() {
                 {m.role === 'user' ? 'U' : 'B'}
               </div>
               <div className="message-bubble">
-                <div className="message-content">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ code: CodeBlock }}>{m.content || ""}</ReactMarkdown>
-                </div>
+                <ErrorBoundary>
+                  <div className="message-content">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ code: CodeBlock }}>{m.content || ""}</ReactMarkdown>
+                  </div>
+                </ErrorBoundary>
                 <div className="message-meta">{m.ts ? new Date(m.ts).toLocaleTimeString() : ''}</div>
               </div>
             </div>

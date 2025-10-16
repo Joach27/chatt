@@ -35,6 +35,8 @@ public class OpenRouterService {
                 .baseUrl(baseUrl)
                 .defaultHeader("Authorization", "Bearer " + apiKey)
                 .defaultHeader("Content-Type", "application/json")
+                .defaultHeader("HTTP_REFERER", "https://github.com/Joach27/chatt")  // ou ton domaine réel
+                .defaultHeader("X-Title", "Chat - Java Spring Boot Client")
                 .build();
     }
 
